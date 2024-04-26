@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, redirect } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import DeckForm from "./DeckForm";
 import BreadCrumb from "../Common/BreadCrumb";
 import { createDeck } from "../../utils/api/index";
@@ -37,7 +37,7 @@ function NewDeck() {
 
     // Redirect to the new deck page if created
     if (createdDeckId) {
-        return <redirect to={`/decks/${createdDeckId}`} />;
+        return <Navigate to={`/decks/${createdDeckId}`} />;
     }
 
     return (

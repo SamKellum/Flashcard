@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams, redirect } from "react-router-dom";
+import { Link, useParams, Navigate } from "react-router-dom";
 import DeckForm from "./DeckForm";
 import BreadCrumb from "../Common/BreadCrumb";
 import { readDeck, updateDeck } from "../../utils/api/index";
@@ -48,7 +48,7 @@ function EditDeck() {
     };
 
     if (isDeckUpdated) {
-        return <redirect to={`/decks/${deck.id}`} />;
+        return <Navigate to={`/decks/${deck.id}`} />;
     }
 
     return (

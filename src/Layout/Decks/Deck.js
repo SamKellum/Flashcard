@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams, redirect } from "react-router-dom";
+import { Link, useParams, Navigate } from "react-router-dom";
 import { readDeck, deleteDeck } from "../../utils/api/index";
 import BreadCrumb from "../Common/BreadCrumb";
 import CardsList from "../Cards/CardsList";
@@ -30,7 +30,7 @@ function Deck() {
     };
 
     if (deleted) {
-        return <redirect to="/" />;
+        return <Navigate to="/" />;
     }
 
     if (deck.id) {

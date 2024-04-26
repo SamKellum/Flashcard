@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams, redirect } from "react-router-dom";
+import { Link, useParams, Navigate } from "react-router-dom";
 import CardForm from "./CardForm";
 import BreadCrumb from "../Common/BreadCrumb";
 import { readDeck, readCard, updateCard } from "../../utils/api/index";
@@ -39,8 +39,13 @@ function EditCard() {
         }
     };
 
+    // Log deckId and shouldRedirect for debugging
+    console.log("deckId:", deckId);
+    console.log("shouldRedirect:", shouldRedirect);
+
+    // Navigate to deck page if shouldRedirect is true
     if (shouldRedirect) {
-        return <redirect to={`/decks/${deckId}`} />;
+        return <Navigate to={`/decks/${deckId}`} />;
     }
 
     return (

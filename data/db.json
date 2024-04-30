@@ -91,6 +91,42 @@
       "back": "setset",
       "deckId": 5,
       "id": 10
+    },
+    {
+      "front": "123123",
+      "back": "123123",
+      "deckId": 3,
+      "id": 11
+    },
+    {
+      "front": "12",
+      "back": "12",
+      "deckId": 3,
+      "id": 12
+    },
+    {
+      "front": "45",
+      "back": "45",
+      "deckId": 3,
+      "id": 13
+    },
+    {
+      "front": "12",
+      "back": "12",
+      "deckId": 3,
+      "id": 14
+    },
+    {
+      "front": "121212",
+      "back": "121212",
+      "deckId": 3,
+      "id": 15
+    },
+    {
+      "front": "789",
+      "back": "789",
+      "deckId": 3,
+      "id": 16
     }
   ]
 }

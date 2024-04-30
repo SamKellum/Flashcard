@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams, Navigate } from "react-router-dom";
+import {useParams, Navigate } from "react-router-dom";
 import CardForm from "./CardForm";
 import BreadCrumb from "../Common/BreadCrumb";
 import { readDeck, createCard } from "../../utils/api/index";
@@ -25,14 +25,13 @@ function NewCard() {
         });
     };
 
-    const handleSubmit = async (event) => {
+    const handleSave = async (event) => {
         event.preventDefault();
 
         try {
             await createCard(deckId, formData);
             setFormData({...initialFormState});
-            setRedirect(true); // Set redirect state to true after successful card creation
-            console.log("Redirecting...");
+            console.log("Card saved.");
         } catch (error) {
             if (error.name !== "AbortError") {
                 throw error;
@@ -48,7 +47,10 @@ function NewCard() {
         loadDeck();
     }, [deckId]);
 
-    console.log("Redirect:", redirect);
+    const handleDone = () => {
+        setRedirect(true);
+    };
+
     if (redirect) {
         return <Navigate to={`/decks/${deckId}`} />;
     }
@@ -62,12 +64,12 @@ function NewCard() {
                 <br />
             </div>
             <div className="row">
-                <CardForm formData={formData} handleChange={handleChange} handleSubmit={handleSubmit} />
+                <CardForm formData={formData} handleChange={handleChange} />
                 <br />
             </div>
             <div className="row">
-                <Link to={`/decks/${deckId}`} className="btn btn-secondary mr-1">Done</Link>
-                <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Save</button>
+                <button type="button" className="btn btn-secondary mr-1" onClick={handleDone}>Done</button>
+                <button type="submit" className="btn btn-primary" onClick={handleSave}>Save</button>
             </div>
         </div>
     );

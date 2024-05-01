@@ -12,9 +12,14 @@ function Deck() {
     // Load deck & cards
     useEffect(() => {
         async function loadDeck() {
-            if (deckId) {
-                const loadedDeck = await readDeck(deckId);
-                setDeck(loadedDeck);
+            try {
+                if (deckId) {
+                    const loadedDeck = await readDeck(deckId);
+                    setDeck(loadedDeck);
+                }
+            } catch (error) {
+                console.error(`Failed to load deck: ${error}`);
+                // You can set an error state here to show the error message on your UI
             }
         }
         loadDeck();
@@ -24,8 +29,13 @@ function Deck() {
     const handleDeckDelete = async () => {
         const confirm = window.confirm("Delete this deck? You will not be able to recover it.");
         if (confirm) {
-            await deleteDeck(deckId);
-            setDeleted(true);
+            try {
+                await deleteDeck(deckId);
+                setDeleted(true);
+            } catch (error) {
+                console.error(`Failed to delete deck: ${error}`);
+                // You can set an error state here to show the error message on your UI
+            }
         }
     };
 
